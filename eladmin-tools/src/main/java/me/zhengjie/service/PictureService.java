@@ -54,6 +54,14 @@ public interface PictureService {
     Picture upload(MultipartFile file, String username);
 
     /**
+     * 上传文件服务器
+     * @param multipartFile
+     * @param username
+     * @return
+     */
+    Picture uploadFastDfs(MultipartFile multipartFile, String username);
+
+    /**
      * 根据ID查询
      * @param id /
      * @return /

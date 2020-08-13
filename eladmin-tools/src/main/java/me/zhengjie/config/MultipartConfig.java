@@ -44,4 +44,9 @@ public class MultipartConfig {
         factory.setLocation(location);
         return factory.createMultipartConfig();
     }
+
+    public static void main(String[] args) {
+        String location = System.getProperty("user.home") + "/.eladmin/file/tmp";
+        System.out.println(location);
+    }
 }

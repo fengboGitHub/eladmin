@@ -120,3 +120,6 @@ file:
   # 文件大小 /M
   maxSize: 100
   avatarMaxSize: 5
+
+  # 文件服务器的查看地址
+fastdfs: 192.168.0.72:8888

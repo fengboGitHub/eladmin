@@ -28,12 +28,15 @@ import me.zhengjie.service.PictureService;
 import me.zhengjie.service.dto.PictureQueryCriteria;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.utils.*;
+import org.csource.common.MyException;
+import org.csource.fastdfs.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -96,7 +99,22 @@ public class PictureServiceImpl implements PictureService {
         return picture;
 
     }
+    @Override
+    @Transactional(rollbackFor = Throwable.class)
+    public Picture uploadFastDfs(MultipartFile multipartFile, String username) {
+        File file = FileUtil.toFile(multipartFile);
+        //上传文件服务器
+        String path = FastDFSClient.uploadFile(FileUtil.getByte(file),FileUtil.getExtensionName(file.getName()));
+        // 验证是否重复上传
+        Picture picture = new Picture();
+        picture.setUsername(username);
+        picture.setUrl(path);
+        picture.setFilename(FileUtil.getFileNameNoEx(multipartFile.getOriginalFilename())+"."+FileUtil.getExtensionName(multipartFile.getOriginalFilename()));
+        //删除临时文件
+        FileUtil.del(file);
+        return picture;
 
+    }
     @Override
     public Picture findById(Long id) {
         Picture picture = pictureRepository.findById(id).orElseGet(Picture::new);

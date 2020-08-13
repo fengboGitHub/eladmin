@@ -16,6 +16,7 @@
         <mail.version>1.5.0-b01</mail.version>
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
         <alipay.version>4.9.153.ALL</alipay.version>
+        <fastDFS.version>1.27-RELEASE</fastDFS.version>
     </properties>
 
     <dependencies>
@@ -45,6 +46,12 @@
             <groupId>com.alipay.sdk</groupId>
             <artifactId>alipay-sdk-java</artifactId>
             <version>${alipay.version}</version>
+        </dependency>
+        <!-- 文件服务器 -->
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

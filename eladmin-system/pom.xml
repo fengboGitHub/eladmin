@@ -38,7 +38,12 @@
             <artifactId>eladmin-tools</artifactId>
             <version>2.5</version>
         </dependency>
-
+        <!--核对模块-->
+        <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>eladmin-hd</artifactId>
+            <version>2.5</version>
+        </dependency>
         <!-- Spring boot websocket -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

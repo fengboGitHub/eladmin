@@ -70,6 +70,16 @@ public class PictureController {
         return new ResponseEntity<>(picture,HttpStatus.OK);
     }
 
+    @Log("上传图片")
+    @PreAuthorize("@el.check('pictures:add','admin')")
+    @PostMapping(value="uploadFastDfs")
+    @ApiOperation("上传图片")
+    public ResponseEntity<Object> uploadFastDfs(@RequestParam MultipartFile file){
+        String userName = SecurityUtils.getCurrentUsername();
+        Picture picture = pictureService.uploadFastDfs(file,userName);
+        return new ResponseEntity<>(picture,HttpStatus.OK);
+    }
+
     @Log("同步图床数据")
     @ApiOperation("同步图床数据")
     @PostMapping(value = "/synchronize")

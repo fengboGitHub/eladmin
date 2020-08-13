@@ -253,7 +253,7 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
         return file1Md5.equals(file2Md5);
     }
 
-    private static byte[] getByte(File file) {
+    public static byte[] getByte(File file) {
         // 得到文件长度
         byte[] b = new byte[(int) file.length()];
         try {

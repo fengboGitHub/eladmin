@@ -15,6 +15,7 @@
  */
 package me.zhengjie.modules.security.config;
 
+import me.zhengjie.modules.security.config.bean.FastClientProperties;
 import me.zhengjie.modules.security.config.bean.LoginProperties;
 import me.zhengjie.modules.security.config.bean.SecurityProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
